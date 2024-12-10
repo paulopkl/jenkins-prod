@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx # Deployment name
+spec:
+  selector:
+    matchLabels:
+      app: nginx # Select pods with label 'app: nginx'
+  replicas: 1 # Number of pod replicas
+  template:
+    metadata:
+      labels:
+        app: nginx # Label for pods
+    spec:
+      containers:
+        - name: nginx # Container name
+          image: nginx # Nginx Docker image
+          ports:
+            - containerPort: 80 # Port on which the container listens
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx # Service name
+  labels:
+    app: nginx # Label for Service
+spec:
+  selector:
+    app: nginx # Selects pods with label 'app: nginx'
+  type: LoadBalancer # Exposes the Service outside the cluster as a LoadBalancer
+  ports:
+    - name: http # Port name
+      protocol: TCP # Protocol used
+      port: 80 # Port on which the Service listens
+      targetPort: 80 # Port to forward traffic to in the pods
