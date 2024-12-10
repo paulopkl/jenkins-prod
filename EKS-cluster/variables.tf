@@ -30,15 +30,3 @@ variable "vpc_name" {
   type    = string
   default = "eks-vpc"
 }
-
-variable "bucket_name" {
-  type        = string
-  description = "AWS Bucket for backend provider"
-  default     = "paulopkl-jenkins-terraform-kubernetes"
-}
-
-variable "bucket_region" {
-  type        = string
-  description = "AWS Bucket region for backend provider"
-  default     = "us-west-1"
-}
