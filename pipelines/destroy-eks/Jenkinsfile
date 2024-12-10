@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage("Create an EKS Cluster") {
+        stage("Destroy EKS Cluster") {
             steps {
                 script {
                     dir('../../EKS-cluster') {
