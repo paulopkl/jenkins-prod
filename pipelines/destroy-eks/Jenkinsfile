@@ -13,7 +13,7 @@ pipeline {
         stage("Destroy EKS Cluster") {
             steps {
                 script {
-                    dir('../../EKS-cluster') {
+                    dir('EKS-cluster') {
                         sh "terraform init --backend-config=dev-backend.tfvars"
                         sh "terraform plan"
                         sh "terraform destroy -auto-approve"
